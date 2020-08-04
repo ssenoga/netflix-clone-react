@@ -1,0 +1,33 @@
+.row {
+  /* row styles */
+  margin-top: 20px;
+}
+.row__images {
+  /* images styles */
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 20px;
+}
+.row__images::-webkit-scrollbar {
+  display: none;
+}
+
+.row__image {
+  /* single image styles */
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  transition: transform 450ms;
+  margin-left: 10px;
+}
+.row__image:hover {
+  transform: scale(1.08);
+}
+
+.row__imageLarge {
+  max-height: 250px;
+}
+.row__imageLarge:hover {
+  transform: scale(1.09);
+}
