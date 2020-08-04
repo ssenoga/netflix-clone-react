@@ -33,12 +33,12 @@ export default function Row({ title, fetchUrl, isLarger }) {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(m.name || "")
+      movieTrailer(m?.title || m?.name || "")
         .then((url) => {
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
         })
-        .catch((err) => {} /*console.log(err) */);
+        .catch((err) => console.log(err));
     }
   };
 
@@ -50,7 +50,9 @@ export default function Row({ title, fetchUrl, isLarger }) {
       <div className="row__images">
         {movies.map((movie) => (
           <img
-            onClick={handleClick(movie)}
+            onClick={() => {
+              handleClick(movie);
+            }}
             key={movie.id}
             src={
               base_url + (isLarger ? movie.poster_path : movie.backdrop_path)
