@@ -30,11 +30,13 @@ export default function Row({ title, fetchUrl, isLarger }) {
   }, [fetchUrl]);
 
   const handleClick = (m) => {
+    console.log("clicked");
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
       movieTrailer(m?.title || m?.name || "")
         .then((url) => {
+          console.log("reached");
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
         })
@@ -50,6 +52,7 @@ export default function Row({ title, fetchUrl, isLarger }) {
       <div className="row__images">
         {movies.map((movie) => (
           <img
+            title={movie?.name || movie?.title}
             onClick={() => {
               handleClick(movie);
             }}
